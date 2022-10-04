@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,7 +43,13 @@ namespace spp_laba_1
 
     public struct MethodTraceResult
     {
-        public long Time { get; set; }
+        public Stopwatch stopwatch;
+
+        public long Time { get
+            {
+                return stopwatch.ElapsedMilliseconds;
+            }
+        }
         public string Name { get; }
         public string ClassName { get; }
 
@@ -50,8 +57,8 @@ namespace spp_laba_1
 
         public MethodTraceResult(string ClassName, string Name)
         {
-            MethodTraceResults = new List<MethodTraceResult>();
-            Time = 0;
+            MethodTraceResults = new();
+            stopwatch = new();
             this.Name = Name;
             this.ClassName = ClassName;
         }
