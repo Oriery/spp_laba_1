@@ -12,6 +12,12 @@ namespace spp_laba_1
             TestClass testClass = new(tracer);
             testClass.Method1();
             testClass.Method1();
+            var t = new Thread(() =>
+            {
+                testClass.Method1();
+            });
+            t.Start();
+            t.Join();
 
             TraceResult traceResult = tracer.GetTraceResult();
 

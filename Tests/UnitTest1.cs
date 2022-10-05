@@ -6,7 +6,7 @@ namespace Tests
     public class UnitTest1
     {
         [TestMethod]
-        public void Test1()
+        public void TestCountingTime()
         {
             Tracer.Tracer tracer = new Tracer.Tracer();
 
@@ -20,6 +20,43 @@ namespace Tests
                 traceResult.ThreadTraceResults[0].Time > 1600 &&
                 traceResult.ThreadTraceResults[0].Time < 1800
                 );
+
+            Assert.IsTrue(
+                traceResult.ThreadTraceResults[0].MethodTraceResults[0].Time > 800 &&
+                traceResult.ThreadTraceResults[0].MethodTraceResults[0].Time < 900
+                );
+        }
+
+        [TestMethod]
+        public void TestMultithreading()
+        {
+            Tracer.Tracer tracer = new Tracer.Tracer();
+
+            TestClass testClass = new(tracer);
+            testClass.Method1();
+            testClass.Method1();
+
+            var t1 = new Thread(() =>
+            {
+                testClass.Method1();
+            });
+            t1.Start(); 
+
+            var t2 = new Thread(() =>
+            {
+                testClass.Method1();
+                testClass.Method1();
+            });
+            t2.Start();
+
+            testClass.MethodWithMultithreadingInside();
+
+            t1.Join();
+            t2.Join();
+
+            TraceResult traceResult = tracer.GetTraceResult();
+
+            Assert.AreEqual(traceResult.ThreadTraceResults.Count, 4);
         }
     }
 
@@ -53,6 +90,22 @@ namespace Tests
         {
             _tracer.StartTrace();
             Thread.Sleep(300);
+            _tracer.StopTrace();
+        }
+
+        public void MethodWithMultithreadingInside()
+        {
+            _tracer.StartTrace();
+            var t2 = new Thread(() =>
+            {
+                Method2();
+            });
+            t2.Start();
+
+            Method2();
+
+            t2.Join();
+
             _tracer.StopTrace();
         }
     }
