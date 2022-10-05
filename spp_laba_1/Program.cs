@@ -25,6 +25,7 @@ namespace spp_laba_1
             string str = serializer.Serialize(traceResult);
 
             Console.WriteLine(str);
+            File.WriteAllText($"out.{serializer.FileFormat}", str);
         }
     }
 
