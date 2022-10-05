@@ -36,7 +36,7 @@ namespace Tracer
         public int Id { get; set; }
 
         [DataMember]
-        public long Time
+        private long _time
         {
             get
             {
@@ -51,8 +51,10 @@ namespace Tracer
             set {}
         }
 
-        [DataMember]
-        public List<MethodTraceResult> _methodTraceResults { get; set; }
+        public long Time { get => _time; }
+
+            [DataMember]
+        private List<MethodTraceResult> _methodTraceResults;
 
         public IReadOnlyList<MethodTraceResult> MethodTraceResults { get => _methodTraceResults; }
 
@@ -74,7 +76,7 @@ namespace Tracer
         public Stopwatch stopwatch;
 
         [DataMember]
-        public long Time
+        private long _time
         {
             get
             {
@@ -84,14 +86,18 @@ namespace Tracer
             set { }
         }
 
-        [DataMember]
-        public string Name { get; set; }
+        public long Time { get => _time; }
 
         [DataMember]
-        public string ClassName { get; set; }
+        private string _name;
+        public string Name { get => _name; }
 
         [DataMember]
-        public List<MethodTraceResult> _methodTraceResults { get; set; }
+        private string _className;
+        public string ClassName { get => _className; }
+
+        [DataMember]
+        private List<MethodTraceResult> _methodTraceResults;
 
         public IReadOnlyList<MethodTraceResult> MethodTraceResults { get => _methodTraceResults; }
 
@@ -99,8 +105,8 @@ namespace Tracer
         {
             _methodTraceResults = new();
             stopwatch = new();
-            this.Name = Name;
-            this.ClassName = ClassName;
+            _name = Name;
+            _className = ClassName;
         }
 
         public void AddMethod(MethodTraceResult methodTraceResult)

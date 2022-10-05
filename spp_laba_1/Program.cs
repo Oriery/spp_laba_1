@@ -21,9 +21,13 @@ namespace spp_laba_1
 
             TraceResult traceResult = tracer.GetTraceResult();
 
-            ISerializer serializer = new SerializerJSON();
+            ISerializer serializer = new SerializerXML();
             string str = serializer.Serialize(traceResult);
+            new WriterToConsole().Write(str);
+            new WriterToFile().Write(str, serializer.FileFormat);
 
+            serializer = new SerializerJSON();
+            str = serializer.Serialize(traceResult);
             new WriterToConsole().Write(str);
             new WriterToFile().Write(str, serializer.FileFormat);
         }
