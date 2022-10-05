@@ -16,9 +16,10 @@ namespace spp_laba_1
         public Tracer()
         {
             StacksForMethodsOfThreads = new();
+            Threads = new();
         }
 
-        void ITracer.StartTrace()
+        public void StartTrace()
         {
             int ThreadId = Thread.CurrentThread.ManagedThreadId;
             var frame = new StackTrace(true).GetFrame(1);
@@ -31,7 +32,7 @@ namespace spp_laba_1
             MethodResult.stopwatch.Start();
         }
 
-        void ITracer.StopTrace()
+        public void StopTrace()
         {
             var ThreadId = Thread.CurrentThread.ManagedThreadId;
             ConcurrentStack<MethodTraceResult> stack = StacksForMethodsOfThreads.GetOrAdd(ThreadId, new ConcurrentStack<MethodTraceResult>());
@@ -48,7 +49,7 @@ namespace spp_laba_1
             }
         }
 
-        TraceResult ITracer.GetTraceResult()
+        public TraceResult GetTraceResult()
         {
             TraceResult traceResult = new();
             foreach (var Thread in Threads.Values)
