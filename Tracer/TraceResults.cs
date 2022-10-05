@@ -12,9 +12,9 @@ namespace Tracer
     [DataContract]
     public struct TraceResult
     {
+        [DataMember]
         private List<ThreadTraceResult> _threadTraceResults;
 
-        [DataMember]
         public IReadOnlyList<ThreadTraceResult> ThreadTraceResults { get => _threadTraceResults; }
 
 
@@ -51,9 +51,9 @@ namespace Tracer
             set {}
         }
 
+        [DataMember]
         public List<MethodTraceResult> _methodTraceResults { get; set; }
 
-        [DataMember]
         public IReadOnlyList<MethodTraceResult> MethodTraceResults { get => _methodTraceResults; }
 
         public ThreadTraceResult(int Id)
@@ -90,9 +90,9 @@ namespace Tracer
         [DataMember]
         public string ClassName { get; set; }
 
+        [DataMember]
         public List<MethodTraceResult> _methodTraceResults { get; set; }
 
-        [DataMember]
         public IReadOnlyList<MethodTraceResult> MethodTraceResults { get => _methodTraceResults; }
 
         public MethodTraceResult(string ClassName, string Name)

@@ -24,8 +24,8 @@ namespace spp_laba_1
             ISerializer serializer = new SerializerJSON();
             string str = serializer.Serialize(traceResult);
 
-            Console.WriteLine(str);
-            File.WriteAllText($"out.{serializer.FileFormat}", str);
+            new WriterToConsole().Write(str);
+            new WriterToFile().Write(str, serializer.FileFormat);
         }
     }
 
