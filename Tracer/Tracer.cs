@@ -49,7 +49,7 @@ namespace Tracer
             TraceResult traceResult = new();
             foreach (var Thread in Threads.Values)
             {
-                traceResult.ThreadTraceResults.Add(Thread);
+                traceResult.AddThread(Thread);
             }
 
             return traceResult;

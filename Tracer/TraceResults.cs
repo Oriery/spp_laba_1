@@ -12,12 +12,20 @@ namespace Tracer
     [DataContract]
     public struct TraceResult
     {
+        private List<ThreadTraceResult> _threadTraceResults;
+
         [DataMember]
-        public List<ThreadTraceResult> ThreadTraceResults { get; set; }
+        public IReadOnlyList<ThreadTraceResult> ThreadTraceResults { get => _threadTraceResults; }
+
 
         public TraceResult()
         {
-            ThreadTraceResults = new();
+            _threadTraceResults = new();
+        }
+
+        public void AddThread(ThreadTraceResult threadTraceResult)
+        {
+            _threadTraceResults.Add(threadTraceResult);
         }
     }
 
