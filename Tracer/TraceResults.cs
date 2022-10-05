@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace spp_laba_1
+namespace Tracer
 {
     public struct TraceResult
     {
@@ -20,7 +20,7 @@ namespace spp_laba_1
     public struct ThreadTraceResult
     {
         public int Id { get; set; }
-        public long Time 
+        public long Time
         {
             get
             {
@@ -45,7 +45,9 @@ namespace spp_laba_1
     {
         public Stopwatch stopwatch;
 
-        public long Time { get
+        public long Time
+        {
+            get
             {
                 return stopwatch.ElapsedMilliseconds;
             }

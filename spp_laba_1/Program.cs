@@ -1,10 +1,12 @@
-﻿namespace spp_laba_1
+﻿using Tracer;
+
+namespace spp_laba_1
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Tracer tracer = new Tracer();
+            Tracer.Tracer tracer = new Tracer.Tracer();
 
             TestClass testClass = new(tracer);
             testClass.Method1();
@@ -18,9 +20,9 @@
 
     public class TestClass
     {
-        private Tracer _tracer;
+        private Tracer.Tracer _tracer;
 
-        public TestClass(Tracer tracer)
+        public TestClass(Tracer.Tracer tracer)
         {
             this._tracer = tracer; 
         }

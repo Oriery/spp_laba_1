@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace spp_laba_1
+namespace Tracer
 {
     public class Tracer : ITracer
     {
@@ -28,7 +23,7 @@ namespace spp_laba_1
             var stack = StacksForMethodsOfThreads.GetOrAdd(ThreadId, new ConcurrentStack<MethodTraceResult>());
             var MethodResult = new MethodTraceResult(ClassName, MethodName);
             stack.Push(MethodResult);
-            
+
             MethodResult.stopwatch.Start();
         }
 
