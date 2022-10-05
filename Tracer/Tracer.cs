@@ -35,12 +35,12 @@ namespace Tracer
             method.stopwatch.Stop();
             if (stack.TryPeek(out var parent))
             {
-                parent.MethodTraceResults.Add(method);
+                parent.AddMethod(method);
             }
             else
             {
                 var Thread = Threads.GetOrAdd(ThreadId, new ThreadTraceResult(ThreadId));
-                Thread.MethodTraceResults.Add(method);
+                Thread.AddMethod(method);
             }
         }
 

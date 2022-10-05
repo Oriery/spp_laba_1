@@ -51,13 +51,20 @@ namespace Tracer
             set {}
         }
 
+        public List<MethodTraceResult> _methodTraceResults { get; set; }
+
         [DataMember]
-        public List<MethodTraceResult> MethodTraceResults { get; set; }
+        public IReadOnlyList<MethodTraceResult> MethodTraceResults { get => _methodTraceResults; }
 
         public ThreadTraceResult(int Id)
         {
-            MethodTraceResults = new();
+            _methodTraceResults = new();
             this.Id = Id;
+        }
+
+        public void AddMethod(MethodTraceResult methodTraceResult)
+        {
+            _methodTraceResults.Add(methodTraceResult);
         }
     }
 
@@ -83,15 +90,22 @@ namespace Tracer
         [DataMember]
         public string ClassName { get; set; }
 
+        public List<MethodTraceResult> _methodTraceResults { get; set; }
+
         [DataMember]
-        public List<MethodTraceResult> MethodTraceResults { get; set; }
+        public IReadOnlyList<MethodTraceResult> MethodTraceResults { get => _methodTraceResults; }
 
         public MethodTraceResult(string ClassName, string Name)
         {
-            MethodTraceResults = new();
+            _methodTraceResults = new();
             stopwatch = new();
             this.Name = Name;
             this.ClassName = ClassName;
+        }
+
+        public void AddMethod(MethodTraceResult methodTraceResult)
+        {
+            _methodTraceResults.Add(methodTraceResult);
         }
     }
 }
