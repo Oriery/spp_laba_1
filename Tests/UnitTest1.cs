@@ -1,11 +1,12 @@
-﻿using Serializers;
 using Tracer;
 
-namespace spp_laba_1
+namespace Tests
 {
-    internal class Program
+    [TestClass]
+    public class UnitTest1
     {
-        static void Main(string[] args)
+        [TestMethod]
+        public void Test1()
         {
             Tracer.Tracer tracer = new Tracer.Tracer();
 
@@ -15,10 +16,10 @@ namespace spp_laba_1
 
             TraceResult traceResult = tracer.GetTraceResult();
 
-            ISerializer serializer = new SerializerJSON();
-            string str = serializer.Serialize(traceResult);
-
-            Console.WriteLine(str);
+            Assert.IsTrue(
+                traceResult.ThreadTraceResults[0].Time > 1600 &&
+                traceResult.ThreadTraceResults[0].Time < 1800
+                );
         }
     }
 
@@ -28,7 +29,7 @@ namespace spp_laba_1
 
         public TestClass(Tracer.Tracer tracer)
         {
-            this._tracer = tracer; 
+            this._tracer = tracer;
         }
 
         public void Method1()
