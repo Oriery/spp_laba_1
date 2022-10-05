@@ -2,14 +2,18 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Tracer
 {
+
+    [DataContract]
     public struct TraceResult
     {
-        public List<ThreadTraceResult> ThreadTraceResults;
+        [DataMember]
+        public List<ThreadTraceResult> ThreadTraceResults { get; set; }
 
         public TraceResult()
         {
@@ -17,9 +21,13 @@ namespace Tracer
         }
     }
 
+    [DataContract]
     public struct ThreadTraceResult
     {
+        [DataMember]
         public int Id { get; set; }
+
+        [DataMember]
         public long Time
         {
             get
@@ -31,7 +39,11 @@ namespace Tracer
                 }
                 return res;
             }
+
+            set {}
         }
+
+        [DataMember]
         public List<MethodTraceResult> MethodTraceResults { get; set; }
 
         public ThreadTraceResult(int Id)
@@ -41,20 +53,29 @@ namespace Tracer
         }
     }
 
+    [DataContract]
     public struct MethodTraceResult
     {
         public Stopwatch stopwatch;
 
+        [DataMember]
         public long Time
         {
             get
             {
                 return stopwatch.ElapsedMilliseconds;
             }
-        }
-        public string Name { get; }
-        public string ClassName { get; }
 
+            set { }
+        }
+
+        [DataMember]
+        public string Name { get; set; }
+
+        [DataMember]
+        public string ClassName { get; set; }
+
+        [DataMember]
         public List<MethodTraceResult> MethodTraceResults { get; set; }
 
         public MethodTraceResult(string ClassName, string Name)

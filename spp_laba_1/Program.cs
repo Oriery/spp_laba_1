@@ -1,4 +1,5 @@
-﻿using Tracer;
+﻿using Serializers;
+using Tracer;
 
 namespace spp_laba_1
 {
@@ -14,7 +15,10 @@ namespace spp_laba_1
 
             TraceResult traceResult = tracer.GetTraceResult();
 
-            Console.WriteLine(traceResult.ToString());
+            ISerializer serializer = new SerializerXML();
+            string str = serializer.Serialize(traceResult);
+
+            Console.WriteLine(str);
         }
     }
 

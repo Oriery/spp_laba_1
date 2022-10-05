@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "spp_laba_1", "spp_laba_1\sp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracer", "Tracer\Tracer.csproj", "{41B62298-C71A-4496-A130-00ED2CD84AFD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Serializers", "Serializers\Serializers.csproj", "{DCE8BF9E-A8D9-4C68-80D5-725E223E0FD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{41B62298-C71A-4496-A130-00ED2CD84AFD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41B62298-C71A-4496-A130-00ED2CD84AFD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41B62298-C71A-4496-A130-00ED2CD84AFD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCE8BF9E-A8D9-4C68-80D5-725E223E0FD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCE8BF9E-A8D9-4C68-80D5-725E223E0FD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCE8BF9E-A8D9-4C68-80D5-725E223E0FD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCE8BF9E-A8D9-4C68-80D5-725E223E0FD2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
