@@ -6,7 +6,7 @@ namespace Tests
     public class UnitTest1
     {
         [TestMethod]
-        public void TestCountingTime()
+        public void TestBasics()
         {
             Tracer.Tracer tracer = new Tracer.Tracer();
 
@@ -24,6 +24,16 @@ namespace Tests
             Assert.IsTrue(
                 traceResult.ThreadTraceResults[0].MethodTraceResults[0].Time > 800 &&
                 traceResult.ThreadTraceResults[0].MethodTraceResults[0].Time < 900
+                );
+
+            Assert.AreEqual(
+                traceResult.ThreadTraceResults[0].MethodTraceResults[0].Name,
+                "Method1"
+                );
+
+            Assert.AreEqual(
+                traceResult.ThreadTraceResults[0].MethodTraceResults[0].ClassName,
+                "Tests.TestClass"
                 );
         }
 
