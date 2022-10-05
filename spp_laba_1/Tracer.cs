@@ -50,7 +50,13 @@ namespace spp_laba_1
 
         TraceResult ITracer.GetTraceResult()
         {
-            throw new NotImplementedException();
+            TraceResult traceResult = new();
+            foreach (var Thread in Threads.Values)
+            {
+                traceResult.ThreadTraceResults.Add(Thread);
+            }
+
+            return traceResult;
         }
     }
 }
